@@ -11,7 +11,7 @@ public class Response1 extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("曾到此一游 Response1 ");
-
+System.out.println("曾到此一游 ");
         req.setAttribute("key1", "value1");
 
         // 设置响应状态码302 ，表示重定向，（已搬迁）
