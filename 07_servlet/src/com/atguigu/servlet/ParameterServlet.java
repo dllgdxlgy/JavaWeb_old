@@ -14,6 +14,7 @@ public class ParameterServlet extends HttpServlet {
         System.out.println("-------------doGet------------");
 
         // 获取请求参数
+        //是前面表单里面的name的username
         String username = req.getParameter("username");
 
         //1 先以iso8859-1进行编码
@@ -21,6 +22,8 @@ public class ParameterServlet extends HttpServlet {
         username = new String(username.getBytes("iso-8859-1"), "UTF-8");
 
         String password = req.getParameter("password");
+
+        //这里面返回的是数组，因为里面可能传进来多个值
         String[] hobby = req.getParameterValues("hobby");
 
         System.out.println("用户名：" + username);
@@ -30,8 +33,8 @@ public class ParameterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // 设置请求体的字符集为UTF-8，从而解决post请求的中文乱码问题
-        // 也要在获取请求参数之前调用才有效
+        // 设置请求体的字符集为UTF-8，从而解决 post请求的中文乱码问题
+        // 也要在获取请求参数之前调用才有效，在获取之后不管用
         req.setCharacterEncoding("UTF-8");
 
         System.out.println("-------------doPost------------");

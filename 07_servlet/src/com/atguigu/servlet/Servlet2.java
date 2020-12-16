@@ -14,7 +14,7 @@ public class Servlet2 extends HttpServlet {
         System.out.println("在Servlet2（柜台2）中查看参数（材料）：" + username);
 
         // 查看 柜台1 是否有盖章
-        Object key1 = req.getAttribute("key1");
+        Object key1 = req.getAttribute("key1"); // servlet1 与 servlet2 的值一样
         System.out.println("柜台1是否有章：" + key1);
 
         // 处理自己的业务
