@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>尚硅谷会员注册页面</title>
-		<link type="text/css" rel="stylesheet" href="../../static/css/style.css" >
-		<script type="text/javascript" src="../../static/script/jquery-1.7.2.js"></script>
+
+		<!-- 一般情况 base标签 永远固定相对路径的跳转结果-->
+		 <base href="http://localhost:8080/Book/">
+
+		<link type="text/css" rel="stylesheet" href="static/css/style.css" >
+		<script type="text/javascript" src="static/script/jquery-1.7.2.js"></script>
 		<script type="text/javascript">
 			// 页面加载完成之后
 			$(function () {
@@ -76,6 +80,7 @@
 					}
 
 					// 去掉错误信息
+
 					$("span.errorMsg").text("");
 
 				});
@@ -91,9 +96,10 @@
 
 	</style>
 	</head>
+
 	<body>
 		<div id="login_header">
-			<img class="logo_img" alt="" src="../../static/img/logo.gif" >
+			<img class="logo_img" alt="" src="static/img/logo.gif" >
 		</div>
 
 			<div class="login_banner">
@@ -101,6 +107,7 @@
 				<div id="l_content">
 					<span class="login_word">欢迎注册</span>
 				</div>
+
 
 				<div id="content">
 					<div class="login_form">
@@ -110,7 +117,11 @@
 								<span class="errorMsg"></span>
 							</div>
 							<div class="form">
-								<form action="http://localhost:8080">
+
+								<!-- 注册地址有两种，实际项目中必须使用绝对路径，但是在做此项目中使用base标签和相对路径的形式-->
+								<!-- 因为配置了base标签，所以 地址是 http://localhost:8080/Book/registServlet-->
+
+								<form action="registServlet" method="post">
 									<label>用户名称：</label>
 									<input class="itxt" type="text" placeholder="请输入用户名"
 										   autocomplete="off" tabindex="1" name="username" id="username" />
@@ -132,8 +143,9 @@
 									<br />
 									<br />
 									<label>验证码：</label>
-									<input class="itxt" type="text" style="width: 150px;" id="code"/>
-									<img alt="" src="../../static/img/code.bmp" style="float: right; margin-right: 40px">
+									<!-- name 属性是必须要有的，是要在servlet里面进行接收，和username和password一样 -->
+									<input class="itxt" name="code" type="text" style="width: 150px;" id="code"/>
+									<img alt="" src="static/img/code.bmp" style="float: right; margin-right: 40px">
 									<br />
 									<br />
 									<input type="submit" value="注册" id="sub_btn" />

@@ -43,10 +43,6 @@ public abstract class BaseDao {
         return -1;
     }
 
-    //查询一条或者返回一个javabean 的sql语句
-    
-   
-
     /**
      * @param: type 返回对象的类型
      * @param: sql 执行的sql语句
@@ -61,7 +57,7 @@ public abstract class BaseDao {
 
         Connection connection = JdbcUtils.getConnection();
         try {
-            return  queryRunner.query(connection,sql,new BeanHandler<T>(type),args);
+            return  queryRunner.query(connection,sql, new BeanHandler<T>(type),args);
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
