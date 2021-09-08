@@ -6,6 +6,7 @@ import java.io.IOException;
 
 public class HelloServlet implements Servlet {
 
+
     public HelloServlet() {
         System.out.println("1 构造器方法");
     }
@@ -15,6 +16,7 @@ public class HelloServlet implements Servlet {
         System.out.println("2 init初始化方法");
 
 //        1、可以获取Servlet程序的别名servlet-name的值
+//        是通过xml文件获取document对象，然后获取servlet标签对象，匹配类名，得到name
         System.out.println("HelloServlet程序的别名是:" + servletConfig.getServletName());
 //        2、获取初始化参数init-param
         System.out.println("初始化参数username的值是;" + servletConfig.getInitParameter("username"));
@@ -38,7 +40,8 @@ public class HelloServlet implements Servlet {
     @Override
     public void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         System.out.println("3 service === Hello Servlet 被访问了");
-        // 类型转换（因为它有getMethod()方法）
+
+        // 类型转换（因为它有getMethod()方法,ServletRequest没有这样的方法，HttpServletRequest是ServletRequest的子类）
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         // 获取请求的方式
         String method = httpServletRequest.getMethod();
